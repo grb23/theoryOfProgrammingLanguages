@@ -176,7 +176,7 @@ def step(e):
         else:
             return BoolExpr(True) # not false
 
-    return Not(step(e.expr))
+    return step(e.expr)
 
 def reduce(e1, e2):
     assert isinstance(e, Expr)
