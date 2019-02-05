@@ -43,16 +43,29 @@ def same(e1, e2):
     assert isinstance(e1, Expr)
     assert isinstance(e2, Expr)
 
-    if value(e1) != value(e2)
-        return False
+    if isinstance(e1, BinaryExpr) and is isinstance(e2, BinaryExpr):
+        return e1.value == e2.value
 
-    return True
+    if isinstance(e1, BoolExpr) and isinstance(e2, BoolExpr):
+        return e1.expr == e2.expr
+
+    if isinstance(e1, NotExpr) and isinstance(e2, NotExpr):
+        return e1.expr == e2.expr
+
+    if isinstance(e1, AndExpr) and isinstance(e2, AndExpr):
+        return e1.lhs == e2.rhs
+
+    if isinstance(e1, OrExpr) and isinstance(e2, OrExpr):
+        return e1.lhs == e2.rhs
+
+    else
+        return False
 
 def value(e):
     assert isinstance(e, Expr)
 
     if type(e) is BoolExpr:
-        return 1
+        return value(e.value)
 
     if type(e) is NotExpr:
         return not value(e.expr)
@@ -63,13 +76,18 @@ def value(e):
     if type(e) is OrExpr:
         return value(e.lhs) or value(e.rhs)
 
-def step(e):
-    return
+def step(e1, op, e2):
+    assert isinstance(e1, Expr)
+    assert isinstance(e2, Expr)
+    assert isinstance(e, Expr)
+
+    exprResult = value(e1) and value(e2.expr)
+
+    return exprResult and value(op)
 
 def reduce(e1, e2):
-    return
+    assert isinstance(e, Expr)
 
-def searchTree(e):
     return
 
 return 0
