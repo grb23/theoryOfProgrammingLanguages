@@ -44,7 +44,7 @@ def same(e1, e2):
     assert isinstance(e1, Expr)
     assert isinstance(e2, Expr)
 
-    # All values not on the diagonal (quick reject)
+    # All values not on the diagonal (table) -- quick reject
     if type(e1) is not type(e2)
         return False
 
@@ -171,7 +171,7 @@ def step(e):
     assert is_reducible(e)
 
     if is_value(e.expr):
-        if e.expr.value == True: # not true
+        if e.expr.value == True: # not trueI hate
             return BoolExpr(False)
         else:
             return BoolExpr(True) # not false
